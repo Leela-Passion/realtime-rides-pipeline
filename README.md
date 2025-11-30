@@ -25,7 +25,7 @@ Below is the architecture used in this project.
 
 > **Architecture Diagram**
 <p align="center">
-  <img src="https://raw.githubusercontent.com/yourusername/yourrepo/main/architecture/architecture_design.png" width="90%" alt="Architecture Diagram" />
+  <img src="https://raw.githubusercontent.com/yourusername/yourrepo/main/assets/architecture_design.png" width="90%" alt="Architecture Diagram" />
 </p>
 
 ---
@@ -159,7 +159,6 @@ realtime-rides-pipeline/
 │   ├── macros/
 |   |   └── generate_schema_name.sql
 │   
-│
 └── docs/
     ├── overview.md
     ├── data_dictionary.md
