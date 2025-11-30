@@ -3,7 +3,7 @@
   <img src="https://raw.githubusercontent.com/Leela-Passion/realtime-rides-pipeline/main/assets/project_banner.png" width="100%" alt="Project Banner" />
 </p>
 
-<h1 align="center">🚕 Real-Time Ride Sharing Analytics Platform</h1>
+<h1 align="center">🚕 Real-Time Ride Sharing Analytics Pipelines</h1>
 <p align="center">
   <b>Databricks • Delta Lake • dbt • Medallion Architecture • SCD Type-2 • SQL</b>
 </p>
@@ -25,7 +25,7 @@ Below is the architecture used in this project.
 
 > **Architecture Diagram**
 <p align="center">
-  <img src="https://raw.githubusercontent.com/yourusername/yourrepo/main/assets/architecture_design.png" width="90%" alt="Architecture Diagram" />
+  <img src="https://raw.githubusercontent.com/Leela-Passion/realtime-rides-pipeline/main/assets/architecture_design.png" width="90%" alt="Architecture Diagram" />
 </p>
 
 ---
