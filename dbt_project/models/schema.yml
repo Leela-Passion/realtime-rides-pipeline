@@ -1,0 +1,175 @@
+version: 2
+
+models:
+
+  - name: customers
+    description: "Silver customers table — cleaned and deduped customer records."
+    columns:
+      - name: customer_id
+        description: "Customer surrogate / natural id from source."
+        tests:
+          - not_null
+          - unique
+      - name: first_name
+        description: "Customer first name."
+      - name: last_name
+        description: "Customer last name."
+      - name: email
+        description: "Customer email address."
+      - name: phone_number
+        description: "Normalized phone number (digits only)."
+      - name: city
+        description: "City inferred from customer address or source."
+      - name: signup_date
+        description: "Date customer signed up."
+      - name: last_updated_timestamp
+        description: "CDC / last updated timestamp used for merges."
+        tests:
+          - not_null
+
+  - name: vehicles
+    description: "Vehicle master data."
+    columns:
+      - name: vehicle_id
+        description: "Vehicle id."
+        tests:
+          - not_null
+          - unique
+      - name: license_plate
+        description: "Vehicle license plate."
+      - name: model
+        description: "Vehicle model."
+      - name: make
+        description: "Vehicle make / manufacturer."
+      - name: year
+        description: "Manufacture year."
+      - name: vehicle_type
+        description: "Vehicle type (e.g., sedan, SUV)."
+      - name: last_updated_timestamp
+        description: "CDC / last updated timestamp."
+
+  - name: drivers
+    description: "Driver master records (linked to vehicles)."
+    columns:
+      - name: driver_id
+        description: "Driver id."
+        tests:
+          - not_null
+          - unique
+      - name: first_name
+        description: "Driver first name."
+      - name: last_name
+        description: "Driver last name."
+      - name: phone_number
+        description: "Driver phone number (normalized)."
+      - name: vehicle_id
+        description: "FK to vehicles.vehicle_id."
+        tests:
+          - relationships:
+              to: ref('vehicles')
+              field: vehicle_id
+      - name: driver_rating
+        description: "Driver rating (average)."
+      - name: city
+        description: "Driver's primary city."
+      - name: last_updated_timestamp
+        description: "CDC / last updated timestamp."
+
+  - name: locations
+    description: "Master list of locations (lat / long)."
+    columns:
+      - name: location_id
+        description: "Location id."
+        tests:
+          - not_null
+          - unique
+      - name: city
+        description: "City name."
+      - name: state
+        description: "State / region."
+      - name: country
+        description: "Country."
+      - name: latitude
+        description: "Latitude coordinate."
+      - name: longitude
+        description: "Longitude coordinate."
+      - name: last_updated_timestamp
+        description: "CDC / last updated timestamp."
+
+  - name: payments
+    description: "Payment transactions for trips."
+    columns:
+      - name: payment_id
+        description: "Payment id."
+        tests:
+          - not_null
+          - unique
+      - name: trip_id
+        description: "FK to trips.trip_id."
+        tests:
+          - relationships:
+              to: ref('trips')
+              field: trip_id
+      - name: customer_id
+        description: "FK to customers.customer_id."
+        tests:
+          - relationships:
+              to: ref('customers')
+              field: customer_id
+      - name: payment_method
+        description: "Payment method used (card, wallet, cash)."
+        tests:
+          - not_null
+      - name: payment_status
+        description: "Payment status (completed / failed / pending)."
+      - name: amount
+        description: "Transaction amount."
+      - name: transaction_time
+        description: "Transaction timestamp."
+      - name: last_updated_timestamp
+        description: "CDC / last updated timestamp."
+
+  - name: trips
+    description: "Fact table of trips (events) with start/end locations and fare."
+    columns:
+      - name: trip_id
+        description: "Trip id."
+        tests:
+          - not_null
+          - unique
+      - name: driver_id
+        description: "FK to drivers.driver_id."
+        tests:
+          - relationships:
+              to: ref('drivers')
+              field: driver_id
+      - name: customer_id
+        description: "FK to customers.customer_id."
+        tests:
+          - relationships:
+              to: ref('customers')
+              field: customer_id
+      - name: vehicle_id
+        description: "FK to vehicles.vehicle_id."
+        tests:
+          - relationships:
+              to: ref('vehicles')
+              field: vehicle_id
+      - name: trip_start_time
+        description: "Trip start timestamp."
+      - name: trip_end_time
+        description: "Trip end timestamp."
+      - name: start_location
+        description: "Start location (location id or text)."
+      - name: end_location
+        description: "End location (location id or text)."
+      - name: distance_km
+        description: "Distance in kilometers."
+      - name: fare_amount
+        description: "Fare amount charged for the trip."
+      - name: payment_method
+        description: "Payment method used for trip settlement."
+      - name: trip_status
+        description: "Trip lifecycle status (completed / cancelled / in_progress)."
+      - name: last_updated_timestamp
+        description: "CDC / last updated timestamp used for merges."
