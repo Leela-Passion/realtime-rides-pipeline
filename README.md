@@ -131,7 +131,7 @@ Contains:
 
 ## 📂 Folder Structure (Clean & Recruiter-Friendly)
 
-`
+```
 realtime-rides-pipeline/
 │
 ├── README.md
@@ -164,14 +164,13 @@ realtime-rides-pipeline/
     ├── overview.md
     ├── data_dictionary.md
     ├── dashboard_screenshots/
-`
+```
 
 ---
 
 ## 🧪 dbt Commands Used in CI (no local install needed)
 
 ```bash
-dbt deps
 dbt run
 dbt test
 dbt snapshot
@@ -209,15 +208,6 @@ This project follows a **Dimensional Modeling** approach using dbt, designed for
   - Linked via surrogate keys to all dimensional tables  
 
 ---
-
-## 📘 Documentation (dbt Docs)
-
-Generate documentation locally:
-
-```bash
-dbt docs generate
-dbt docs serve
-```
 
 ## Output:
 
@@ -260,5 +250,4 @@ dbt docs serve
 
 ## 💬 Contact
 
-If you like this project or want to collaborate, feel free to reach out!
-I’m always open to data engineering, analytics engineering, and dashboard projects.
+If you like this project or want to collaborate, feel free to reach out! 
