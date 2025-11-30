@@ -176,122 +176,88 @@ dbt test
 dbt snapshot
 dbt docs generate
 ```
+## 🧪 Data Quality Tests
 
-%md
-🧪 Data Quality Tests
+Data quality is ensured using **dbt's native testing framework**:
 
-Implemented through dbt’s testing framework:
-
-✅ unique (IDs)
-
-✅ not_null
-
-✅ relationships (FK constraints)
-
-✅ Source freshness checks
-
-✅ Snapshot date validity
-
-📊 Data Model Summary
-Dimensions
-
-DimCustomers
-
-DimDrivers
-
-DimVehicles
-
-DimLocations
-
-DimPayments
-
-DimTrips
-
-Facts
-
-FactTrips (from gold layer)
-
-📘 Documentation (dbt Docs)
-
-To generate:
-
-dbt docs generate
-dbt docs serve
-
-
-Outputs:
-
-Model lineage graph
-
-Column-level documentation
-
-Source metadata
-
-Snapshot history
-
-Test results
-
-🛠️ Tools & Technologies
-Layer	Technology
-Ingestion	Databricks Notebooks, Spark
-Processing	PySpark, Delta Lake
-Modeling	dbt Core
-Storage	Delta tables (Bronze→Silver→Gold)
-Documentation	dbt docs
-Orchestration (optional)	GitHub Actions / Databricks Jobs
-🎓 What This Project Demonstrates (for Recruiters)
-
-This repository directly reflects skills needed for:
-
-🎯 Data Engineer Roles
-
-Medallion architecture
-
-Distributed processing on Spark
-
-Delta Lake ACID operations
-
-Incremental ETL pipelines
-
-SCD Type-2 modeling
-
-🎯 Analytics Engineer Roles
-
-dbt modeling
-
-Tests, documentation, macros
-
-Fact/dimension design
-
-Data contracts
-
-Reusable transformations
-
-🎯 Data Analyst Roles
-
-Clean, analytics-ready datasets
-
-Exploratory SQL on Trips / Revenue / Driver metrics
-
-Dashboard screenshots included
-
-🚀 Future Enhancements
-
- Add Airflow / Prefect orchestration
-
- Add streaming ingestion (Structured Streaming)
-
- Add a real-time dashboard using Power BI / Tableau
-
- Add DuckDB + MotherDuck support
-
- Add CI/CD for dbt + docs deployment
-
-💬 Contact
-
-If you like this project or want to collaborate, feel free to reach out!
-
+- ✅ `unique` — ensures primary keys are not duplicated  
+- ✅ `not_null` — prevents missing key fields  
+- ✅ `relationships` — enforces FK constraints across models  
+- ✅ Source freshness checks — validates timely ingestion  
+- ✅ Snapshot date validity — ensures SCD2 timelines stay consistent  
 
 ---
 
-%
+## 📊 Data Model Summary
+
+This project follows a **Dimensional Modeling** approach using dbt, designed for scalable analytics and trusted data delivery.
+
+### 🧩 Dimensions
+
+- **DimCustomers** — customer master data, demographics, sign-up details  
+- **DimDrivers** — driver profiles, ratings, onboarding details  
+- **DimVehicles** — vehicle types, registration, attributes  
+- **DimLocations** — pickup/dropoff standardized location dimension  
+- **DimPayments** — payment methods, transaction mapping  
+- **DimTrips** — enriched trip-level metadata for analysis  
+
+### 📦 Facts
+
+- **FactTrips** — core analytical fact table built from the Gold layer  
+  - Includes fares, discounts, surge, duration, distance  
+  - Linked via surrogate keys to all dimensional tables  
+
+---
+
+## 📘 Documentation (dbt Docs)
+
+Generate documentation locally:
+
+```bash
+dbt docs generate
+dbt docs serve
+```
+
+## Output:
+
+-📂 **Model lineage graph**
+-🧬 **Column-level documentation**
+-🔍 **Source metadata**
+-🕒 **Snapshot/SCD history**
+-🧪 **Test results dashboard**
+
+## 🎓 What This Project Demonstrates (For Recruiters)
+### 🎯 Data Engineer
+-Medallion architecture
+-Distributed ETL using Spark
+-Delta Lake ACID + time-travel
+-Incremental pipelines
+-SCD Type-2 modeling with dbt snapshots
+
+### 🎯 Analytics Engineer
+
+-dbt modeling (staging → core → marts)
+-Tests, documentation & macros
+-Dimensional modeling
+-Data contracts & governed layers
+-Reusable SQL transformations
+
+### 🎯 Data Analyst
+-Clean, analytics-ready tables
+-Trips, Revenue, Driver & Customer metrics
+-Ready for dashboards (Power BI / Tableau)
+-Example SQL queries included
+
+## 🚀 Future Enhancements
+
+-**Add Airflow / Prefect orchestration
+-Add Structured Streaming for real-time ingestion
+-Add Power BI / Tableau real-time dashboards
+-Add DuckDB + MotherDuck for local analytics
+-Add CI/CD for dbt + docs deployment
+-Publish documentation to GitHub Pages**
+
+## 💬 Contact
+
+If you like this project or want to collaborate, feel free to reach out!
+I’m always open to data engineering, analytics engineering, and dashboard projects.
