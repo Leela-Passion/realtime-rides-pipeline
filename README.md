@@ -175,6 +175,7 @@ dbt run
 dbt test
 dbt snapshot
 dbt docs generate
+```
 
 %md
 🧪 Data Quality Tests
