@@ -1,6 +1,6 @@
 <!-- PROJECT BANNER -->
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Leela-Passion/realtime-rides-pipeline/main/architecture/architecture_design.png" width="100%" alt="Project Banner" />
+  <img src="https://raw.githubusercontent.com/Leela-Passion/realtime-rides-pipeline/main/assets/project_banner.png" width="100%" alt="Project Banner" />
 </p>
 
 <h1 align="center">🚕 Real-Time Ride Sharing Analytics Platform</h1>
@@ -135,8 +135,9 @@ Contains:
 realtime-rides-pipeline/
 │
 ├── README.md
-├── architecture/
+├── assets/
 │   ├── architecture_design.png
+|   ├── project_banner.png
 |
 ├── notebooks/
 │   ├── bronze_ingestion.html
